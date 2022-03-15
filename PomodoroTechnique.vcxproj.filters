@@ -18,18 +18,18 @@
     <ClCompile Include="main.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="SevenSegmentDisplay.cpp">
+    <ClCompile Include="seven_segment_display.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Timer.cpp">
+    <ClCompile Include="timer.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="SevenSegmentDisplay.h">
+    <ClInclude Include="seven_segment_display.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="Timer.h">
+    <ClInclude Include="timer.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

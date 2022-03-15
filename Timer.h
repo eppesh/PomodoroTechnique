@@ -5,7 +5,7 @@
 #include <conio.h>
 #include <time.h>
 
-#include "SevenSegmentDisplay.h"
+#include "seven_segment_display.h"
 
 namespace pomodoro_technique
 {

@@ -11,7 +11,7 @@
 
 #include "graphics.h"
 
-#include "Timer.h"
+#include "timer.h"
 
 using namespace pomodoro_technique;
 
