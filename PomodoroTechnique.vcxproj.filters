@@ -32,5 +32,44 @@
     <ClInclude Include="timer.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Resource.rc">
+      <Filter>资源文件</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\pause-64.png">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\reset-64.png">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\start-64.png">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\pause-light-64.png">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\reset-light-64.png">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\start-light-64.png">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\set-64.png">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\set-32.png">
+      <Filter>资源文件</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="res\Alarm.wav">
+      <Filter>资源文件</Filter>
+    </Media>
   </ItemGroup>
 </Project>
