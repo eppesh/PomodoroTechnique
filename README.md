@@ -25,7 +25,7 @@ Authors: Sean (eppesh@163.com)
 
 目前仅限于Windows平台。
 
-利用`Visual Studio`直接打开源码中的工程文件`.sln`或`.vcxproj`；
+利用`Visual Studio`直接打开源码中的工程文件`.sln`或`.vcxproj`进行编译运行即可；
 
 开发相关：
 
@@ -33,7 +33,7 @@ Authors: Sean (eppesh@163.com)
 - `Visual Studio 2019`; 
 - `EasyX 2021`; 
 
-注意：在VS2019中，“项目属性” -- “配置属性” -- “高级” -- “字符集” 采用了“使用多字节字符集”；
+注意：在VS2019中，“项目属性” -- “配置属性” -- “高级” -- “字符集” 采用了“使用了多字节字符集”，若使用默认的“使用 Unicode 字符集”，编译时可能会报错。
 
 # Usage
 

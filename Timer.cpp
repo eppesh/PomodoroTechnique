@@ -64,7 +64,7 @@ void Timer::DrawUI()
 {
     int window_width = 1200;
     int window_height = 560;
-    initgraph(window_width, window_height, EW_SHOWCONSOLE);  // 初始化窗体
+    initgraph(window_width, window_height/*, EW_SHOWCONSOLE*/);  // 初始化窗体
     setbkcolor(RGB(6, 31, 62));
     cleardevice();
 
