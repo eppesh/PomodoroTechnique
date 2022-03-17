@@ -66,6 +66,12 @@
     <Image Include="res\set-32.png">
       <Filter>资源文件</Filter>
     </Image>
+    <Image Include="res\rest-32.png">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\rest-light-32.png">
+      <Filter>资源文件</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Media Include="res\Alarm.wav">

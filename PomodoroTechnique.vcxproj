@@ -157,6 +157,8 @@
     <Image Include="res\pause-light-64.png" />
     <Image Include="res\reset-64.png" />
     <Image Include="res\reset-light-64.png" />
+    <Image Include="res\rest-32.png" />
+    <Image Include="res\rest-light-32.png" />
     <Image Include="res\set-32.png" />
     <Image Include="res\set-64.png" />
     <Image Include="res\start-64.png" />

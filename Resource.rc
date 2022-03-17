@@ -60,6 +60,10 @@ IDB_RESET_LIGHT         PNG                     "res\\reset-light-64.png"
 
 IDB_SET                 PNG                     "res\\set-32.png"
 
+IDB_REST                PNG                     "res\\rest-32.png"
+
+IDB_REST_LIGHT          PNG                     "res\\rest-light-32.png"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //

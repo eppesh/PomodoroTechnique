@@ -4,7 +4,7 @@ namespace pomodoro_technique
 {
 
 Timer::Timer(int hour, int minute, int second) :current_hour_(hour), current_minute_(minute), current_second_(second),
-    is_reset_(false), is_pause_(true)
+    is_reset_(false), is_pause_(true), is_rest_(false)
 {
     if (current_hour_ < 0)
     {
@@ -74,9 +74,12 @@ void Timer::DrawUI()
     loadimage(&img_btn_reset_, "PNG", MAKEINTRESOURCE(IDB_RESET));
     loadimage(&img_btn_reset_light_, "PNG", MAKEINTRESOURCE(IDB_RESET_LIGHT));
     loadimage(&img_btn_set_, "PNG", MAKEINTRESOURCE(IDB_SET));
+    loadimage(&img_btn_rest_, "PNG", MAKEINTRESOURCE(IDB_REST));
+    loadimage(&img_btn_rest_light_, "PNG", MAKEINTRESOURCE(IDB_REST_LIGHT));
     SetTransparent(img_btn_start_, 64, 64, 500, 400);
     SetTransparent(img_btn_reset_, 64, 64, 620, 400);
     SetTransparent(img_btn_set_, 32, 32, 1158, 10);
+    SetTransparent(img_btn_rest_, 32, 32, 1158, 52);
 }
 
 void Timer::Start()
@@ -122,32 +125,63 @@ void Timer::Start()
         {
             // 循环播放提示音
             PlaySound(MAKEINTRESOURCE(IDR_WAVE_ALARM), nullptr, SND_RESOURCE | SND_ASYNC | SND_LOOP);
-            int msg_id = MessageBox(0, "是否休息5分钟？", "Timer", MB_ICONQUESTION | MB_OKCANCEL);
-            if (msg_id == IDOK)
+            if (is_rest_)
             {
-                current_hour_ = 0;
-                current_minute_ = 5;
-                current_second_ = 0;
-                is_pause_ = true;
-                is_reset_ = true;
-                setfillcolor(RGB(6, 31, 62));
-                setlinecolor(RGB(6, 31, 62));
-                fillrectangle(500, 400, 564, 464);
-                SetTransparent(img_btn_start_, 64, 64, 500, 400);                
+                is_rest_ = false;
+                int msg_id = MessageBox(0, "是否开始下一次专注？", "Timer", MB_ICONQUESTION | MB_OKCANCEL);
+                if (msg_id == IDOK)
+                {                    
+                    current_hour_ = 0;
+                    current_minute_ = 15;
+                    current_second_ = 0;
+                    is_pause_ = true;
+                    is_reset_ = true;
+                    setfillcolor(RGB(6, 31, 62));
+                    setlinecolor(RGB(6, 31, 62));
+                    fillrectangle(500, 400, 564, 464);
+                    SetTransparent(img_btn_start_, 64, 64, 500, 400);
+                }
+                else
+                {
+                    Sleep(500);
+                    is_pause_ = true;
+                    is_reset_ = true;
+                    Reset();
+                    setfillcolor(RGB(6, 31, 62));
+                    setlinecolor(RGB(6, 31, 62));
+                    fillrectangle(500, 400, 564, 464);
+                    SetTransparent(img_btn_start_, 64, 64, 500, 400);
+                }
             }
             else
             {
-                Sleep(500);
-                is_pause_ = true;
-                is_reset_ = true;
-                Reset();
-                setfillcolor(RGB(6, 31, 62));
-                setlinecolor(RGB(6, 31, 62));
-                fillrectangle(500, 400, 564, 464);
-                SetTransparent(img_btn_start_, 64, 64, 500, 400);
-            }
-            PlaySound(nullptr, nullptr, 0);         // 停止播放音乐
-            
+                int msg_id = MessageBox(0, "是否休息5分钟？", "Timer", MB_ICONQUESTION | MB_OKCANCEL);
+                if (msg_id == IDOK)
+                {
+                    is_rest_ = true;
+                    current_hour_ = 0;
+                    current_minute_ = 5;
+                    current_second_ = 0;
+                    is_pause_ = true;
+                    is_reset_ = true;
+                    setfillcolor(RGB(6, 31, 62));
+                    setlinecolor(RGB(6, 31, 62));
+                    fillrectangle(500, 400, 564, 464);
+                    SetTransparent(img_btn_start_, 64, 64, 500, 400);
+                }
+                else
+                {
+                    Sleep(500);
+                    is_pause_ = true;
+                    is_reset_ = true;
+                    Reset();
+                    setfillcolor(RGB(6, 31, 62));
+                    setlinecolor(RGB(6, 31, 62));
+                    fillrectangle(500, 400, 564, 464);
+                    SetTransparent(img_btn_start_, 64, 64, 500, 400);
+                }
+            }            
+            PlaySound(nullptr, nullptr, 0);         // 停止播放音乐            
         }
     }
 }
@@ -226,8 +260,8 @@ void Timer::OnEvent(const ExMessage message)
 {
     RECT rect_start = { 500,400,564,464 };      // 开始按钮所在矩形区域
     RECT rect_reset = { 620,400,684,464 };      // 重置按钮所在矩形区域
-    //RECT rect_set = { 1126,10,1190,74 };      // 设置按钮所在矩形区域
-    RECT rect_set = { 1158,10,1190,42 };      // 设置按钮所在矩形区域
+    RECT rect_set = { 1126,10,1190,42 };        // 设置按钮所在矩形区域
+    RECT rect_rest = { 1158,52,1190,84 };       // 休息按钮所在矩形区域
     POINT mouse = { message.x,message.y };      // 鼠标当前坐标
     switch (message.message)
     {
@@ -269,9 +303,28 @@ void Timer::OnEvent(const ExMessage message)
         {
             SetTimer();
         }
+        // 判断"休息"按钮是否触发
+        else if (IsTrigger(rect_rest, mouse))
+        {
+            is_rest_ = true;
+            is_pause_ = false;  // 立刻开始"休息"的倒计时
+            current_hour_ = 0;
+            current_minute_ = 5;
+            current_second_ = 0;
+            is_reset_ = true;
+            setfillcolor(RGB(6, 31, 62));
+            setlinecolor(RGB(6, 31, 62));
+            fillrectangle(1158, 52, 1190, 84);
+            SetTransparent(img_btn_rest_light_, 32, 32, 1158, 52);
+            // 并显示"暂停"按钮,表示现在已在倒计时
+            setfillcolor(RGB(6, 31, 62));
+            setlinecolor(RGB(6, 31, 62));
+            fillrectangle(500, 400, 564, 464);
+            SetTransparent(img_btn_pause_, 64, 64, 500, 400);
+        }
         break;
     }
-    case WM_LBUTTONUP:
+    case WM_LBUTTONUP:  // 可通过变换图片实现强调效果
     {
         if (IsTrigger(rect_reset, mouse))
         {
@@ -289,6 +342,13 @@ void Timer::OnEvent(const ExMessage message)
                 fillrectangle(500, 400, 564, 464);
                 SetTransparent(img_btn_pause_, 64, 64, 500, 400);
             }
+        }
+        else if (IsTrigger(rect_rest, mouse))
+        {
+            setfillcolor(RGB(6, 31, 62));
+            setlinecolor(RGB(6, 31, 62));
+            fillrectangle(1158, 52, 1190, 84);
+            SetTransparent(img_btn_rest_, 32, 32, 1158, 52);
         }
     }
     case WM_KEYDOWN:

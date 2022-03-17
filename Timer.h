@@ -50,8 +50,11 @@ private:
     IMAGE img_btn_reset_;
     IMAGE img_btn_reset_light_;
     IMAGE img_btn_set_;
+    IMAGE img_btn_rest_;
+    IMAGE img_btn_rest_light_;
     bool is_reset_;                             // 是否已重置
     bool is_pause_;                             // 是否已暂停
+    bool is_rest_;                              // 是否已休息
 };
 
 } // namespace pomodoro_technique

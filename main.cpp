@@ -17,7 +17,7 @@ using namespace pomodoro_technique;
 
 int main()
 {
-    Timer timer(0, 0, 3);
+    Timer timer(0, 15, 0);
     timer.DrawUI();
 
     // 响应鼠标事件的子线程
