@@ -162,12 +162,12 @@ void Timer::Start()
                     current_hour_ = 0;
                     current_minute_ = 5;
                     current_second_ = 0;
-                    is_pause_ = true;
+                    is_pause_ = false;
                     is_reset_ = true;
                     setfillcolor(RGB(6, 31, 62));
                     setlinecolor(RGB(6, 31, 62));
                     fillrectangle(500, 400, 564, 464);
-                    SetTransparent(img_btn_start_, 64, 64, 500, 400);
+                    SetTransparent(img_btn_pause_, 64, 64, 500, 400);
                 }
                 else
                 {
@@ -301,6 +301,7 @@ void Timer::OnEvent(const ExMessage message)
         // 判断"设置"按钮是否触发;只有暂停时才可设置
         else if (IsTrigger(rect_set, mouse) && is_pause_)
         {
+            is_rest_ = false;
             SetTimer();
         }
         // 判断"休息"按钮是否触发
