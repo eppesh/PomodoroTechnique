@@ -215,7 +215,7 @@ bool IsTrigger(RECT rectangle, POINT point)
 void Timer::SetTimer()
 {
     char input[32] = { 0 };
-    InputBox(input, 32, "请以\"##:##:##\"形式输入时分秒,每个位置2位,按分号隔开;\n如: \"00:15:01\"");
+    InputBox(input, 32, "请以\"##:##:##\"形式输入时分秒,每个位置2位,按冒号隔开;\n如: \"00:15:01\"");
     std::string times(input);
     std::regex pattern("([0-9]{2}):([0-9]{2}):([0-9]{2})");
     if (std::regex_match(times, pattern))
