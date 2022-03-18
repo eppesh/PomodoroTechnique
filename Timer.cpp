@@ -132,9 +132,9 @@ void Timer::Start()
                 if (msg_id == IDOK)
                 {                    
                     current_hour_ = 0;
-                    current_minute_ = 15;
+                    current_minute_ = 25;
                     current_second_ = 0;
-                    is_pause_ = true;
+                    is_pause_ = false;
                     is_reset_ = true;
                     setfillcolor(RGB(6, 31, 62));
                     setlinecolor(RGB(6, 31, 62));
