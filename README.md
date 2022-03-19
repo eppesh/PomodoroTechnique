@@ -65,15 +65,9 @@ Authors: Sean (eppesh@163.com)
 
 # Screenshots
 
-- 主界面
+![Pic](https://github.com/eppesh/PomodoroTechnique/blob/main/screenshots/Demo.gif)
 
-  ![pic](https://github.com/eppesh/PomodoroTechnique/blob/main/screenshots/Pomodoro%20Technique.png)
-
-- 开始/暂停
-
-  ![pic](https://github.com/eppesh/PomodoroTechnique/blob/main/screenshots/Start_Pause.png)
-
-“休息”与“设置”的截图请参考`./screenshots/`下的图片。
+截图请参考`./screenshots/`下的图片。
 
 # Changelogs
 
