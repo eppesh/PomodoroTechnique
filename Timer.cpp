@@ -139,7 +139,7 @@ void Timer::Start()
                     setfillcolor(RGB(6, 31, 62));
                     setlinecolor(RGB(6, 31, 62));
                     fillrectangle(500, 400, 564, 464);
-                    SetTransparent(img_btn_start_, 64, 64, 500, 400);
+                    SetTransparent(img_btn_pause_, 64, 64, 500, 400);
                 }
                 else
                 {
